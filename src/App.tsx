@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { themes, themeByName } from "./themes";
 import { generate, type Symmetry } from "./avatarGen";
 import { Avatar } from "./Avatar";
@@ -23,28 +23,41 @@ export default function App() {
     document.title = "Chaos Avatar Generator";
   }, []);
 
-  const reroll = () => setSeed((s) => s + 1);
+  const _reroll = () => setSeed((s) => s + 1);
+  void _reroll;
 
   const iconColor = useMemo(() => {
     const palette = spec.theme.colors;
     return palette[Math.floor(Math.random() * palette.length)];
   }, [spec]);
 
+  const base = import.meta.env.BASE_URL;
+  const maskStyle = (file: string) => ({
+    maskImage: `url(${base}${file})`,
+    WebkitMaskImage: `url(${base}${file})`,
+    maskSize: "contain",
+    WebkitMaskSize: "contain",
+    maskRepeat: "no-repeat",
+    WebkitMaskRepeat: "no-repeat",
+    maskPosition: "center",
+    WebkitMaskPosition: "center",
+  }) as CSSProperties;
+
   return (
     <div className=" backdrop-blur-lg min-h-screen min-w-2xl flex flex-col justify-center gap-8 p-4">
       <div className="flex flex-row items-center ml-4 gap-4">
         <div
-        role="img"
-        aria-label="Chaos logo"
-        style={{ ["--color-random" as string]: iconColor }}
-        className="w-20 h-20 bg-random [mask-image:url(/chaos-icon.svg)] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center] [-webkit-mask-image:url(/chaos-icon.svg)] [-webkit-mask-size:contain] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center]"
-      />
-      <div
-        role="img"
-        aria-label="Chaos"
-        style={{ ["--color-random" as string]: iconColor }}
-        className="w-20 h-20 bg-random [mask-image:url(/chaos.svg)] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center] [-webkit-mask-image:url(/chaos.svg)] [-webkit-mask-size:contain] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center]"
-      />
+          role="img"
+          aria-label="Chaos logo"
+          style={{ ["--color-random" as string]: iconColor, ...maskStyle("chaos-icon.svg") }}
+          className="w-20 h-20 bg-random"
+        />
+        <div
+          role="img"
+          aria-label="Chaos"
+          style={{ ["--color-random" as string]: iconColor, ...maskStyle("chaos.svg") }}
+          className="w-20 h-20 bg-random"
+        />
       </div>
       <div className="stage">
         <Avatar spec={spec} size={320} />
@@ -70,11 +83,11 @@ export default function App() {
         </label>
 
         <label>
-          characters (0–2)
+          characters (0–3)
           <input
             value={chars}
             onChange={(e) => setChars(e.target.value.slice(0, 2))}
-            maxLength={2}
+            maxLength={3}
             placeholder="JD"
           />
         </label>
@@ -90,8 +103,7 @@ export default function App() {
             <option value="mirror">mirror</option>
           </select>
         </label>
-
-        <button onClick={reroll}>generate</button>
+        <button>Download</button>
       </div>
     </div>
   );
