@@ -1,6 +1,16 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Chaotic Sans";
+  src: url("./fonts/chaotic-sans.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
+  --font-chaotic: "Chaotic Sans", ui-sans-serif, system-ui, sans-serif;
+
   /* iridescent */
   --color-heliotrope: #c48dfc;
   --color-heliotrope-light: #ea8afd;
@@ -84,64 +94,8 @@ h1 {
   letter-spacing: 0.04em;
 }
 
-.stage {
-  display: grid;
-  gap: 12px;
-  justify-items: center;
-}
-
-.stage svg {
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-}
-
-.meta {
-  display: flex;
-  gap: 16px;
-  font-size: 0.85rem;
-  opacity: 0.7;
-}
-
-.controls {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.controls label {
-  display: grid;
-  gap: 4px;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  opacity: 0.8;
-}
-
-.controls input,
-.controls select {
-  padding: 8px 10px;
-  border-radius: 8px;
-  border: 1px solid #2a2a2e;
-  background: #18181b;
-  color: inherit;
-  font-size: 0.95rem;
-  font-family: inherit;
-}
-
-.controls button {
-  grid-column: 1 / -1;
-  padding: 12px;
-  border-radius: 8px;
-  border: 0;
-  background: #00a86b;
-  color: #f5fbf8;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+button {
   cursor: pointer;
-  font-family: inherit;
-}
-
-.controls button:hover {
-  background: #0d7a52;
+  padding: 8px 12px;
+  font-size: 1rem;
 }

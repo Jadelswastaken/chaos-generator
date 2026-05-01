@@ -17,7 +17,7 @@
     "*": true,
     "plaintext": false,
     "markdown": false,
-    "scminput": false,
+    "scminput": false
   },
   "editor.minimap.enabled": false,
   "workbench.colorCustomizations": {
@@ -143,4 +143,22 @@
     "charts.green": "#b5f7e5",
     "charts.purple": "#c48dfc"
   },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "files.autoSave": "onFocusChange",
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "prettier.requireConfig": true,
+  "files.eol": "\n",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false
 }

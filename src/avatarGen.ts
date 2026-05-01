@@ -6,43 +6,66 @@ export type AvatarSpec = {
   theme: Theme;
   symmetry: Symmetry;
   chars: string;
-  grid: string[][]; // 4x4 of hex colors
+  image: string | null;
+  badge: boolean;
+  size: number;
+  grid: string[][];
   textColor: string;
   badgeColor: string;
 };
 
-const SIZE = 4;
+export const GRID_SIZES = [4, 6, 8] as const;
+
+export const CENTERPIECES = [
+  { value: "", label: "none" },
+  { value: "chaos-icon.svg", label: "chaos" },
+  { value: "demeter.svg", label: "demeter" },
+  { value: "my-take-away.svg", label: "my-take-away" },
+  { value: "jadels.png", label: "jadels" },
+] as const;
 
 const rng = () => Math.random();
 
 const pick = <T,>(arr: T[]): T => arr[Math.floor(rng() * arr.length)];
 
-const canonicalRadial = (r: number, c: number): [number, number] => {
-  // 4-fold rotation around center: (r,c) -> (c, 3-r)
+const canonicalRadial = (
+  r: number,
+  c: number,
+  size: number,
+): [number, number] => {
+  // 4-fold rotation around center: (r,c) -> (c, size-1-r)
   const orbit: [number, number][] = [
     [r, c],
-    [c, SIZE - 1 - r],
-    [SIZE - 1 - r, SIZE - 1 - c],
-    [SIZE - 1 - c, r],
+    [c, size - 1 - r],
+    [size - 1 - r, size - 1 - c],
+    [size - 1 - c, r],
   ];
   orbit.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
   return orbit[0];
 };
 
-const canonicalMirror = (r: number, c: number): [number, number] => {
-  return [r, Math.min(c, SIZE - 1 - c)];
+const canonicalMirror = (
+  r: number,
+  c: number,
+  size: number,
+): [number, number] => {
+  return [r, Math.min(c, size - 1 - c)];
 };
 
-const buildGrid = (palette: string[], symmetry: Symmetry): string[][] => {
+const buildGrid = (
+  palette: string[],
+  symmetry: Symmetry,
+  size: number,
+): string[][] => {
   const canon =
     symmetry === "radial" ? canonicalRadial : canonicalMirror;
   const reps = new Map<string, string>();
-  const grid: string[][] = Array.from({ length: SIZE }, () =>
-    Array(SIZE).fill(""),
+  const grid: string[][] = Array.from({ length: size }, () =>
+    Array(size).fill(""),
   );
-  for (let r = 0; r < SIZE; r++) {
-    for (let c = 0; c < SIZE; c++) {
-      const [cr, cc] = canon(r, c);
+  for (let r = 0; r < size; r++) {
+    for (let c = 0; c < size; c++) {
+      const [cr, cc] = canon(r, c, size);
       const key = `${cr},${cc}`;
       let color = reps.get(key);
       if (!color) {
@@ -80,6 +103,9 @@ export const generate = (
   theme: Theme,
   chars: string,
   symmetryMode: Symmetry | "random",
+  image: string | null = null,
+  badge: boolean = true,
+  size: number = 6,
 ): AvatarSpec => {
   const symmetry: Symmetry =
     symmetryMode === "random"
@@ -87,13 +113,16 @@ export const generate = (
         ? "radial"
         : "mirror"
       : symmetryMode;
-  const grid = buildGrid(theme.colors, symmetry);
+  const grid = buildGrid(theme.colors, symmetry, size);
   const badgeColor = pickBadge(theme.colors);
   const textColor = luminance(badgeColor) > 0.5 ? "#111" : "#fff";
   return {
     theme,
     symmetry,
-    chars: chars.slice(0, 2),
+    chars: chars.slice(0, 3),
+    image,
+    badge,
+    size,
     grid,
     textColor,
     badgeColor,
