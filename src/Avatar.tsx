@@ -31,6 +31,7 @@ export const Avatar = forwardRef<SVGSVGElement, Props>(({ spec, size = 320 }, re
     >
       <defs>
         {hasImage && imageColor && (
+          // @ts-ignore - maskType is a valid SVG attribute
           <mask id={maskId} maskType="alpha">
             <image
               href={imgHref}

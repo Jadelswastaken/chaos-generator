@@ -29,8 +29,8 @@ const GlassSelect: React.FC<GlassSelectProps> = ({
   // Close on outside click.
   useEffect(() => {
     if (!open) return;
-    const handler = e => {
-      if (!rootRef.current?.contains(e.target)) setOpen(false);
+    const handler = (e: MouseEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -60,14 +60,14 @@ const GlassSelect: React.FC<GlassSelectProps> = ({
     el?.scrollIntoView({ block: 'nearest' });
   }, [activeIndex, open]);
 
-  const commit = idx => {
+  const commit = (idx: number) => {
     const opt = options[idx];
     if (!opt) return;
     onChange(opt.value);
     setOpen(false);
   };
 
-  const handleKey = e => {
+  const handleKey = (e: React.KeyboardEvent<HTMLButtonElement | HTMLUListElement>) => {
     if (disabled) return;
     if (!open) {
       if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
@@ -127,7 +127,7 @@ const GlassSelect: React.FC<GlassSelectProps> = ({
           role="listbox"
           tabIndex={-1}
           onKeyDown={handleKey}
-          className={`absolute z-50 w-full max-h-64 overflow-auto bg-primary-white/80 backdrop-blur-lg border border-earth/60 rounded-lg shadow-xl shadow-primary-950/50 py-1 focus:outline-none ${dropUp ? 'bottom-full mb-2' : 'top-full mt-2'}`}
+          className={`absolute z-50 w-full max-h-64 overflow-auto bg-black/80 backdrop-blur-lg border border-earth/60 rounded-lg shadow-xl shadow-primary-950/50 py-1 focus:outline-none ${dropUp ? 'bottom-full mb-2' : 'top-full mt-2'}`}
         >
           {options.map((opt, i) => {
             const isSelected = i === selectedIndex;
@@ -166,7 +166,7 @@ const GlassSelect: React.FC<GlassSelectProps> = ({
   );
 }
 
-function Chevron({ open }) {
+function Chevron({ open }: { open: boolean }) {
   return (
     <svg
       viewBox="0 0 20 20"

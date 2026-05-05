@@ -165,7 +165,7 @@ export default function App() {
         <Avatar ref={svgRef} spec={spec} size={320} />
       </div>
       {/* controls */}
-      <div className="gap-6 grid grid-cols-3 mx-4">
+      <div className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-4">
         {/* column 1 */}
         <div className="flex flex-col gap-4">
           <label className="gap-2 flex flex-row items-center">
