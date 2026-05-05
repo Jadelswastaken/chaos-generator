@@ -1,6 +1,6 @@
 import type { Theme } from "./themes";
 
-export type Symmetry = "radial" | "mirror";
+export type Symmetry = "radial" | "mirror" | "none";
 
 export type AvatarSpec = {
   theme: Theme;
@@ -8,10 +8,12 @@ export type AvatarSpec = {
   chars: string;
   image: string | null;
   badge: boolean;
+  badgeShape: "circle" | "square";
   size: number;
   grid: string[][];
   textColor: string;
   badgeColor: string;
+  imageColor: string | null;
 };
 
 export const GRID_SIZES = [4, 6, 8] as const;
@@ -22,6 +24,10 @@ export const CENTERPIECES = [
   { value: "demeter.svg", label: "demeter" },
   { value: "my-take-away.svg", label: "my-take-away" },
   { value: "jadels.png", label: "jadels" },
+  { value: "h.svg", label: "hephaestus" },
+  { value: "kibisis.svg", label: "hermes" },
+  { value: "letter.svg", label: "letter" },
+  
 ] as const;
 
 const rng = () => Math.random();
@@ -57,12 +63,20 @@ const buildGrid = (
   symmetry: Symmetry,
   size: number,
 ): string[][] => {
-  const canon =
-    symmetry === "radial" ? canonicalRadial : canonicalMirror;
-  const reps = new Map<string, string>();
   const grid: string[][] = Array.from({ length: size }, () =>
     Array(size).fill(""),
   );
+  if (symmetry === "none") {
+    for (let r = 0; r < size; r++) {
+      for (let c = 0; c < size; c++) {
+        grid[r][c] = pick(palette);
+      }
+    }
+    return grid;
+  }
+  const canon =
+    symmetry === "radial" ? canonicalRadial : canonicalMirror;
+  const reps = new Map<string, string>();
   for (let r = 0; r < size; r++) {
     for (let c = 0; c < size; c++) {
       const [cr, cc] = canon(r, c, size);
@@ -102,29 +116,33 @@ const pickBadge = (palette: string[]): string => {
 export const generate = (
   theme: Theme,
   chars: string,
-  symmetryMode: Symmetry | "random",
+  symmetryMode: Symmetry,
   image: string | null = null,
   badge: boolean = true,
   size: number = 6,
+  overrides: {
+    badgeColor?: string | null;
+    textColor?: string | null;
+    imageColor?: string | null;
+  } = {},
 ): AvatarSpec => {
-  const symmetry: Symmetry =
-    symmetryMode === "random"
-      ? rng() < 0.5
-        ? "radial"
-        : "mirror"
-      : symmetryMode;
+  const symmetry = symmetryMode;
   const grid = buildGrid(theme.colors, symmetry, size);
-  const badgeColor = pickBadge(theme.colors);
-  const textColor = luminance(badgeColor) > 0.5 ? "#111" : "#fff";
+  const autoBadge = pickBadge(theme.colors);
+  const badgeColor = overrides.badgeColor ?? autoBadge;
+  const autoText = luminance(badgeColor) > 0.5 ? "#111" : "#fff";
+  const textColor = overrides.textColor ?? autoText;
   return {
     theme,
     symmetry,
     chars: chars.slice(0, 3),
     image,
     badge,
+    badgeShape: "circle",
     size,
     grid,
     textColor,
     badgeColor,
+    imageColor: overrides.imageColor ?? null,
   };
 };

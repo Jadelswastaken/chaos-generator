@@ -5,7 +5,7 @@ export type Theme = {
 
 export const themes: Theme[] = [
   {
-    name: "iridescent",
+    name: "chaos",
     colors: [
       "#c48dfc", // heliotrope
       "#ea8afd", // heliotrope light
@@ -39,6 +39,22 @@ export const themes: Theme[] = [
       "#1a3a2e", // forest
     ],
   },
+  {name: "hephaestus", colors: [
+      "#1c1917", // ink
+      "#f5f1ea", // paper
+      "#ebe6dc", // paper soft
+      "#c2410c", // pop
+      "#9a3308", // pop dark
+      "#b87333", // copper
+      "#1c1917", // rule
+      "#6b6760", // muted
+  ]}, 
+  {name: "kibisis", colors: [
+      "#2b2e34", // graphite slate
+      "#c6a75e", // soft gold
+      "#2c4567", // bunting blue
+      "#4d6473", // blue slate
+  ]}, 
   {name: "mix", colors: [
       "#c48dfc", // heliotrope
       "#ea8afd", // heliotrope light
@@ -61,7 +77,6 @@ export const themes: Theme[] = [
       "#f5fbf8", // jade white
       "#1a3a2e", // forest
   ]},
-  {name: "chaos", colors: ["var(--color-random)"]},
 ];
 
 export const themeByName = (name: string): Theme =>

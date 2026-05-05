@@ -10,7 +10,8 @@ const VB = 400;
 const BADGE_R = VB * 0.22;
 
 export const Avatar = forwardRef<SVGSVGElement, Props>(({ spec, size = 320 }, ref) => {
-  const { grid, chars, image, badge, textColor, badgeColor } = spec;
+  const { grid, chars, image, badge, badgeShape, textColor, badgeColor, imageColor } = spec;
+  const maskId = `imgMask-${(image ?? "").replace(/[^a-zA-Z0-9]/g, "_")}`;
   const gridSize = grid.length || 4;
   const cell = VB / gridSize;
   const hasImage = !!image;
@@ -29,9 +30,18 @@ export const Avatar = forwardRef<SVGSVGElement, Props>(({ spec, size = 320 }, re
       aria-label={`avatar ${image ?? chars}`}
     >
       <defs>
-        <clipPath id="centerClip">
-          <circle cx={VB / 2} cy={VB / 2} r={BADGE_R} />
-        </clipPath>
+        {hasImage && imageColor && (
+          <mask id={maskId} maskType="alpha">
+            <image
+              href={imgHref}
+              x={VB / 2 - BADGE_R}
+              y={VB / 2 - BADGE_R}
+              width={imgSize}
+              height={imgSize}
+              preserveAspectRatio="xMidYMid meet"
+            />
+          </mask>
+        )}
       </defs>
 
       {grid.map((row, r) =>
@@ -48,10 +58,20 @@ export const Avatar = forwardRef<SVGSVGElement, Props>(({ spec, size = 320 }, re
       )}
 
       {(hasImage || hasChars) && badge && (
-        <circle cx={VB / 2} cy={VB / 2} r={BADGE_R} fill={badgeColor} />
+        badgeShape === "square" ? (
+          <rect
+            x={VB / 2 - BADGE_R}
+            y={VB / 2 - BADGE_R}
+            width={BADGE_R * 2}
+            height={BADGE_R * 2}
+            fill={badgeColor}
+          />
+        ) : (
+          <circle cx={VB / 2} cy={VB / 2} r={BADGE_R} fill={badgeColor} />
+        )
       )}
 
-      {hasImage && (
+      {hasImage && !imageColor && (
         <image
           href={imgHref}
           x={VB / 2 - BADGE_R}
@@ -59,7 +79,17 @@ export const Avatar = forwardRef<SVGSVGElement, Props>(({ spec, size = 320 }, re
           width={imgSize}
           height={imgSize}
           preserveAspectRatio="xMidYMid meet"
-          clipPath={badge ? "url(#centerClip)" : undefined}
+        />
+      )}
+
+      {hasImage && imageColor && (
+        <rect
+          x={VB / 2 - BADGE_R}
+          y={VB / 2 - BADGE_R}
+          width={imgSize}
+          height={imgSize}
+          fill={imageColor}
+          mask={`url(#${maskId})`}
         />
       )}
 

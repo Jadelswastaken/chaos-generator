@@ -11,7 +11,7 @@
 @theme {
   --font-chaotic: "Chaotic Sans", ui-sans-serif, system-ui, sans-serif;
 
-  /* iridescent */
+  /* chaos */
   --color-heliotrope: #c48dfc;
   --color-heliotrope-light: #ea8afd;
   --color-ice-cold: #b5f7e5;
@@ -36,6 +36,22 @@
   --color-jade-pale: #b8ecd5;
   --color-jade-white: #f5fbf8;
   --color-jade-forest: #1a3a2e;
+
+  /* hephaestus */
+  --color-ink: #1c1917;        
+  --color-paper: #f5f1ea;      
+  --color-paper-soft: #ebe6dc; 
+  --color-pop: #c2410c;        
+  --color-pop-dark: #9a3308;   
+  --color-copper: #b87333;     
+  --color-rule: #1c1917;
+  --color-muted: #6b6760;
+
+/* kibisis */
+  --color-graphite-slate: #2b2e34;
+  --color-soft-gold: #c6a75e;
+  --color-bunting-blue: #2c4567;
+  --color-blue-slate: #4d6373;
 }
 
 @utility bg-random {
@@ -73,7 +89,7 @@ body {
   animation: chaos-bg 30s linear infinite;
   color: #f1f1f1;
   display: grid;
-  place-items: center;
+  place-items: center;  
 }
 
 @media (prefers-reduced-motion: reduce) {
