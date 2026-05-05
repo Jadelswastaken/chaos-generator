@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="34.641575mm"
+   height="31.693392mm"
+   viewBox="0 0 34.641575 31.693391"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   sodipodi:docname="h.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.5409491"
+     inkscape:cx="71.709053"
+     inkscape:cy="72.033528"
+     inkscape:window-width="896"
+     inkscape:window-height="599"
+     inkscape:window-x="1313"
+     inkscape:window-y="1189"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1">
+    <inkscape:page
+       x="0"
+       y="-3.3400116e-18"
+       width="34.641575"
+       height="31.69339"
+       id="page1"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <filter
+       id="cardShadow"
+       x="-0.019466341"
+       y="-0.045915715"
+       width="1.1323711"
+       height="1.3122269">
+      <feOffset
+         in="SourceGraphic"
+         dx="1.2"
+         dy="1.2"
+         result="off"
+         id="feOffset1" />
+      <feFlood
+         flood-color="#1a1a1a"
+         flood-opacity="1"
+         id="feFlood1" />
+      <feComposite
+         in2="off"
+         operator="in"
+         result="shadow"
+         id="feComposite1" />
+      <feMerge
+         id="feMerge2">
+        <feMergeNode
+           in="shadow"
+           id="feMergeNode1" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode2" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(0.25000322,0.24999964)">
+    <g
+       id="g2"
+       transform="translate(-120.649,-72.711498)">
+      <path
+         id="rect24-83-2"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 132.58469,85.591796 v 5.222421 h 11.40137 v -5.222421 z" />
+      <path
+         id="rect24-83-5-7"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 124.9619,80.288244 v 17.300753 h 6.55463 V 80.288244 Z" />
+      <path
+         id="rect24-83-5-3-3"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 145.04956,80.288244 v 17.300753 h 6.55515 V 80.288244 Z" />
+      <path
+         id="rect24-9-7"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 121.84219,98.459745 v 5.445145 h 12.84263 v -5.445145 z" />
+      <path
+         id="rect24-8-9"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 141.94794,98.459745 v 5.445145 h 12.84263 v -5.445145 z" />
+      <path
+         id="rect24-0-0"
+         style="fill:#1a1a1a;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+         d="m 141.94794,73.904654 v 5.444629 h 12.84263 v -5.444629 z" />
+    </g>
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-118.4239,-70.057716)">
+    <path
+       id="rect24-83"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 129.4164,81.998475 v 5.222421 h 11.40137 v -5.222421 z" />
+    <path
+       id="rect24-83-5"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 76.694923,-121.79361 h 17.300753 v -6.55463 H 76.694923 Z"
+       transform="rotate(90)" />
+    <path
+       id="rect24-83-5-3"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 76.694923,-141.88127 h 17.300753 v -6.55515 H 76.694923 Z"
+       transform="rotate(90)" />
+    <rect
+       filter="url(#cardShadow)"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       id="rect24"
+       width="12.842681"
+       height="5.4447589"
+       x="118.6739"
+       y="70.307716" />
+    <path
+       id="rect24-9"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 118.6739,94.866424 v 5.445146 h 12.84263 v -5.445146 z" />
+    <path
+       id="rect24-8"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 138.77965,94.866424 v 5.445146 h 12.84263 v -5.445146 z" />
+    <path
+       id="rect24-0"
+       style="fill:#c2410c;fill-opacity:1;stroke:#1a1a1a;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke"
+       d="m 138.77965,70.311333 v 5.444629 h 12.84263 v -5.444629 z" />
+  </g>
+</svg>
